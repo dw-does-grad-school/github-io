@@ -1,26 +1,132 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --radius-theme: var(--radius);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* 
+  BASE THEME: MINIMALIST (Sleek, Black/White, GitHub Pages style)
+*/
+:root {
+  --background: #ffffff;
+  --foreground: #09090b;
+  --card: #ffffff;
+  --card-foreground: #09090b;
+  --primary: #18181b;
+  --primary-foreground: #fafafa;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --border: #e4e4e7;
+  --radius: 0.5rem;
+  --shadow-style: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #09090b;
+  --card-foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #18181b;
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
+  --border: #27272a;
+  --shadow-style: none;
+}
+
+/* 
+  THEME: NEOBRUTALIST (Codecademy, Gumroad style)
+  Bold, high contrast, hard shadows, vibrant colors.
+*/
+[data-theme="neobrutalist"] {
+  --background: #fffdf5;
+  /* Creamy off-white */
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --primary: #3b82f6;
+  /* Vibrant Blue */
+  --primary-foreground: #ffffff;
+  --secondary: #a855f7;
+  /* Vibrant Purple */
+  --secondary-foreground: #ffffff;
+  --border: #000000;
+  --radius: 0px;
+  --shadow-style: 4px 4px 0px 0px #000000;
+}
+
+[data-theme="neobrutalist"].dark {
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+  --card: #2a2a2a;
+  --card-foreground: #ffffff;
+  --primary: #fbbf24;
+  /* Amber */
+  --primary-foreground: #000000;
+  --secondary: #f472b6;
+  /* Pink */
+  --secondary-foreground: #000000;
+  --border: #ffffff;
+  --shadow-style: 4px 4px 0px 0px #ffffff;
+}
+
+/* 
+  THEME: GAMER / FUTURISTIC
+  Neon, glow, dark by default (but we need a light mode too), techy.
+*/
+[data-theme="gamer"] {
+  --background: #f0fdfa;
+  /* Cyan tint light */
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --primary: #0ea5e9;
+  /* Sky Blue */
+  --primary-foreground: #ffffff;
+  --secondary: #6366f1;
+  /* Indigo */
+  --secondary-foreground: #ffffff;
+  --border: #0ea5e9;
+  --radius: 1rem;
+  --shadow-style: 0 0 10px rgba(14, 165, 233, 0.3);
+}
+
+[data-theme="gamer"].dark {
+  --background: #020617;
+  /* Deep Slate */
+  --foreground: #e2e8f0;
+  --card: #0f172a;
+  /* Slate 900 */
+  --card-foreground: #e2e8f0;
+  --primary: #00ff9d;
+  /* Neon Green */
+  --primary-foreground: #000000;
+  --secondary: #d946ef;
+  /* Neon Fuchsia */
+  --secondary-foreground: #ffffff;
+  --border: #00ff9d;
+  --shadow-style: 0 0 15px rgba(0, 255, 157, 0.4);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Utility class for custom shadows since Tailwind v4 might need config for complex shadows */
+.theme-shadow {
+  box-shadow: var(--shadow-style);
 }
